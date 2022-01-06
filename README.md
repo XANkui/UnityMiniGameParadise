@@ -8,5 +8,7 @@
 2、游戏效果预览：![image](https://github.com/XANkui/UnityMiniGameParadise/blob/main/ReadMe_Images/Bricks.gif)
 
 ## 二、Fly Pins 见缝插针 （MGP_002FlyPin）
+
 1、游戏实现过程说明地址：https://blog.csdn.net/u014361280/article/details/122349777
+
 2、游戏效果预览：![image](https://github.com/XANkui/UnityMiniGameParadise/blob/main/ReadMe_Images/FlyPin.gif)
