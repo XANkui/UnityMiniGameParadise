@@ -57,11 +57,7 @@ namespace MGP_002FlyPin {
 		/// 清空消息
 		/// </summary>
 		public void ClearAllMsg() {
-			// 消息事件置空
-            foreach (MsgType msgType in m_MsgDict.Keys)
-            {
-				m_MsgDict[msgType] = null;
-            }
+
 			m_MsgDict.Clear();
 		}
 	}

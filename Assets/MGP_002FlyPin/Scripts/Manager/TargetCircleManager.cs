@@ -33,7 +33,7 @@ namespace MGP_002FlyPin
 		public void UpdateRotateSelf() {
             if (m_TargetCircleTrans != null && m_IsRotated==true)
             {
-				m_TargetCircleTrans.Rotate(Vector3.forward,Time.deltaTime * m_Speed * -1);
+				m_TargetCircleTrans.Rotate(Vector3.forward,Time.deltaTime * m_Speed * -1);  // -1 是让其反向旋转
             }
 		}
 

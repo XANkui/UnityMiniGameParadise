@@ -108,6 +108,20 @@ namespace MGP_002FlyPin
             StopAllCoroutines();
         }
 
+        // Unity 周期函数 每帧调用
+        private void OnGUI()
+        {
+            // 游戏操作说明
+            GUIStyle fontStyle = new GUIStyle();
+            fontStyle.normal.background = null;    //设置背景填充
+            fontStyle.normal.textColor = new Color(1, 0, 0);   //设置字体颜色
+            fontStyle.fontSize = 40;       //字体大小
+            GUI.Label(new Rect(10, 10, 200, 200),
+                "操作说明：\n1、点击鼠标左键发射球体；\n2、两针 Pin 碰撞会自动触发重新开始游戏；",
+                fontStyle);
+
+        }
+
         /// <summary>
         /// 游戏结束
         /// </summary>
