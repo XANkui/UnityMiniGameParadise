@@ -12,3 +12,10 @@
 1、游戏实现过程说明地址：https://blog.csdn.net/u014361280/article/details/122349777
 
 2、游戏效果预览：![image](https://github.com/XANkui/UnityMiniGameParadise/blob/main/ReadMe_Images/FlyPin.gif)
+
+## 三、Jump Jump 跳一跳 （MGP_003JumpJump）
+
+1、游戏实现过程说明地址：https://blog.csdn.net/u014361280/article/details/122478869?spm=1001.2014.3001.5501
+
+2、游戏效果预览：![image](https://github.com/XANkui/UnityMiniGameParadise/blob/main/ReadMe_Images/JumpJump.gif)
+
