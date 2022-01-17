@@ -20,16 +20,12 @@ namespace MGP_004CompoundBigWatermelon
         private Transform m_Warningline;
         private Transform m_SpawnFruitPosTrans;
 
-        private bool m_GameOverWarning;
-        public bool GameOverWarning => m_GameOverWarning;
+        private bool m_IsGameOverWarning;
+        public bool GameOverWarning => m_IsGameOverWarning;
         private bool m_IsGameOVer ;
         public bool GameOver=> m_IsGameOVer;
-
-
-        private float m_OverTimeLength = 3;
+ 
         private float m_OverTimer = 0;
-
-        private float m_WarningTimeLength = 0.5f;
         private float m_WarningTimer = 0;
         private MonoBehaviour m_Mono;
 
@@ -66,7 +62,7 @@ namespace MGP_004CompoundBigWatermelon
 
         public void Init(Transform worldTrans, Transform uiTrans, params object[] manager)
         {
-            m_GameOverWarning = false;
+            m_IsGameOverWarning = false;
             m_IsGameOVer = false;
             m_ScoreManager.Init(worldTrans, uiTrans);
             m_EffectManager.Init(worldTrans, uiTrans);
@@ -107,7 +103,7 @@ namespace MGP_004CompoundBigWatermelon
             m_Warningline = null;
             m_SpawnFruitPosTrans = null;
 
-            m_GameOverWarning = false;
+            m_IsGameOverWarning = false;
             m_IsGameOVer = false;
         }
 
@@ -123,7 +119,7 @@ namespace MGP_004CompoundBigWatermelon
             if (IsGameOverWarning() == true)
             {
                 m_WarningTimer += Time.deltaTime;
-                if (m_WarningTimer >= m_WarningTimeLength)
+                if (m_WarningTimer >= GameConfig.JUDGE_GAME_OVER_WARNING_TIME_LENGHT)
                 {
                     m_Warningline.gameObject.SetActive(true);
 
@@ -132,7 +128,7 @@ namespace MGP_004CompoundBigWatermelon
                 if (IsJudgeGameOver() == true)
                 {
                     m_OverTimer += Time.deltaTime;
-                    if (m_OverTimer >= m_OverTimeLength)
+                    if (m_OverTimer >= GameConfig.JUDGE_GAME_OVER_TIME_LENGHT)
                     {
                         m_IsGameOVer = true;
 
@@ -169,7 +165,7 @@ namespace MGP_004CompoundBigWatermelon
                     {
                         if (fruit.CircleCollider2D.enabled == true && fruit != m_FruitManager.CurFruit)
                         {
-                            if (m_Warningline.transform.position.y - (fruit.transform.position.y + fruit.CircleCollider2D.radius) < 0.5f)
+                            if (m_Warningline.transform.position.y - (fruit.transform.position.y + fruit.CircleCollider2D.radius) < GameConfig.GAME_OVER_WARNING_LINE_DISTANCE)
                             {
                                 return true;
                             }

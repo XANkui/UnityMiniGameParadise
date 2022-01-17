@@ -8,7 +8,6 @@ namespace MGP_004CompoundBigWatermelon
 
 	public class Effect : MonoBehaviour
 	{
-		private float speed = 5f;
 		private SpriteRenderer m_SpriteRenderer;
 		private float m_ColorValue = 0;
 		public SpriteRenderer SpriteRenderer
@@ -29,11 +28,6 @@ namespace MGP_004CompoundBigWatermelon
 			StartCoroutine(EffectAnimation(color, showAnimationEndAction));
 		}
 
-		private void OnDisable()
-		{
-			StopAllCoroutines();
-		}
-
 		IEnumerator EffectAnimation(Color color, Action<Effect> showAnimationEndAction)
 		{
 			m_ColorValue = 0;
@@ -42,7 +36,7 @@ namespace MGP_004CompoundBigWatermelon
 			while (true)
 			{
 				// lerp 匀速插值处理
-				m_ColorValue += 1.0f / speed * Time.deltaTime;
+				m_ColorValue += 1.0f / GameConfig.EFFECT_ANIMATION_SPEED * Time.deltaTime;
 				color.a = Mathf.Lerp(color.a, 1, m_ColorValue);
 				SpriteRenderer.color = color;
 				if ((1 - color.a <= 0.05f))
@@ -60,7 +54,7 @@ namespace MGP_004CompoundBigWatermelon
 			while (true)
 			{
 				// lerp 匀速插值处理
-				m_ColorValue += 1.0f / speed * Time.deltaTime;
+				m_ColorValue += 1.0f / GameConfig.EFFECT_ANIMATION_SPEED * Time.deltaTime;
 				color.a = Mathf.Lerp(color.a, 0, m_ColorValue);
 				SpriteRenderer.color = color;
 				if ((color.a - 0) <= 0.05f)
@@ -79,6 +73,11 @@ namespace MGP_004CompoundBigWatermelon
             {
 				showAnimationEndAction.Invoke(this);
             }
+		}
+
+		private void OnDisable()
+		{
+			StopAllCoroutines();
 		}
 	}
 }

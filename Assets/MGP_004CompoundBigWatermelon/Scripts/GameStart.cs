@@ -4,7 +4,9 @@ using UnityEngine;
 
 namespace MGP_004CompoundBigWatermelon
 { 
-
+    /// <summary>
+    /// 整个游戏入口
+    /// </summary>
 	public class GameStart : MonoBehaviour
 	{
         private void Awake()

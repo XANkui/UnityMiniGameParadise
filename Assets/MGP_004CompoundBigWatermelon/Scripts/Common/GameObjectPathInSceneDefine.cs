@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MGP_004CompoundBigWatermelon
-{ 
+{
 
+	/// <summary>
+	/// 场景中游戏物体路径定义类，统一管理景中游戏物体路径
+	/// </summary>
 	public class GameObjectPathInSceneDefine 
 	{
 		public const string WORLD_PATH = "World";

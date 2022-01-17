@@ -26,7 +26,6 @@ namespace MGP_004CompoundBigWatermelon
 
 		private bool m_IsFalled = false;
 		private bool m_IsCanSpawn = false;
-		private const float Fruit_SCALE = 0.80f;
 		private MonoBehaviour m_Mono;
 
 
@@ -55,6 +54,16 @@ namespace MGP_004CompoundBigWatermelon
 
         public void Destroy()
         {
+            // 清空生成的水果
+            if (m_SpawnFruitPosTrans!=null)
+            {
+				int childCount = m_SpawnFruitPosTrans.childCount;
+				for (int i = (childCount - 1); i >= 0; i--)
+				{
+					GameObject.Destroy(m_SpawnFruitPosTrans.GetChild(i));
+				}
+			}			
+
 			m_FuritPrefabList.Clear();
 			m_SpawnFruitPosTrans = null;
 			m_Mono = null;
@@ -62,20 +71,25 @@ namespace MGP_004CompoundBigWatermelon
 			m_AudioManager = null;
 		}
 
+		/// <summary>
+		/// 游戏结束的时候禁用水果的重力和碰撞
+		/// </summary>
 		public void OnGameOver() {
             foreach (Transform item in m_SpawnFruitPosTrans)
             {
 				Fruit fruit = item.GetComponent<Fruit>();
                 if (fruit!=null)
                 {
-					fruit.Rigidbody2D.bodyType = RigidbodyType2D.Static;
-					fruit.CircleCollider2D.enabled = false;
-                }
+					fruit.DisableFruit();
+
+				}
 
 			}
 		}
 
-
+		/// <summary>
+		/// 
+		/// </summary>
 		void LoadFruitsPrefab() {
 			m_FuritPrefabList.Clear();
 			// FruitSeriesType 枚举的名字和预制体名字一致
@@ -94,6 +108,9 @@ namespace MGP_004CompoundBigWatermelon
 			}
 		}
 
+		/// <summary>
+		/// 监控鼠标情况，进行水果移动和释放
+		/// </summary>
 		void UpdateFruitOperation()
 		{
 
@@ -114,6 +131,7 @@ namespace MGP_004CompoundBigWatermelon
 					m_CurFruit.Fall();
 
 				}
+
 				if (m_IsCanSpawn == true)
 				{
 					m_Mono.StartCoroutine(SpawnRandomFruit(m_SpawnFruitPosTrans.position, m_SpawnFruitPosTrans));
@@ -133,7 +151,7 @@ namespace MGP_004CompoundBigWatermelon
 		IEnumerator SpawnRandomFruit(Vector2 pos, Transform parent)
 		{
 			m_IsCanSpawn = false;
-			yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(GameConfig.FRUIT_SPAWN_INTERVAL_TIME);
 			if (GameManager.Instance.GameOver == false)
 			{
 				int random = Random.Range(0, (int)((int)FruitSeriesType.SUM_COUNT / 2));
@@ -177,7 +195,7 @@ namespace MGP_004CompoundBigWatermelon
 			}
 
 			fruit.transform.position = pos;
-			fruit.transform.localScale *= Fruit_SCALE;
+			fruit.transform.localScale *= GameConfig.FRUIT_SCALE;
 
 			return fruit;
 		}
@@ -197,7 +215,7 @@ namespace MGP_004CompoundBigWatermelon
 		}
 
 		/// <summary>
-		/// 释放水果的时候，水平位置的限制
+		/// 移动水果的时候，水平位置的限制
 		/// </summary>
 		/// <param name="pos"></param>
 		/// <returns>限制后的水果位置</returns>
@@ -262,6 +280,7 @@ namespace MGP_004CompoundBigWatermelon
 				m_SpawnFruitPosTrans,
 				true).Rigidbody2D.angularVelocity = toColFruit.Rigidbody2D.angularVelocity; // 附上角速度
 
+			// 当前是直接销毁，好一点的方式的建立对象池，循环利用
 			GameObject.Destroy(col.gameObject);
 			GameObject.Destroy(toColFruit.gameObject);
 
@@ -271,12 +290,9 @@ namespace MGP_004CompoundBigWatermelon
 
 			m_AudioManager.PlayBombSound();
 
-			m_ScoreManager.Score += colFruitId * 10;
+			m_ScoreManager.Score += colFruitId * GameConfig.COMPOUND_FRUIT_BASE_SCORE;
 
 		}
-
-
-
 
 	}
 }

@@ -47,6 +47,10 @@ namespace MGP_004CompoundBigWatermelon
             effect.Show(color, OnEffectShowEndAction);
         }
 
+        /// <summary>
+        /// 简单对象池获取特效
+        /// </summary>
+        /// <returns></returns>
         private Effect GetEffect() {
             if (m_IdleEffectQueue.Count > 0)
             {
@@ -61,6 +65,10 @@ namespace MGP_004CompoundBigWatermelon
             }
         }
 
+        /// <summary>
+        /// 特效动画结束，回收特效到对象池
+        /// </summary>
+        /// <param name="effect"></param>
         private void OnEffectShowEndAction(Effect effect) {
             effect.gameObject.SetActive(false);
             m_IdleEffectQueue.Enqueue(effect);

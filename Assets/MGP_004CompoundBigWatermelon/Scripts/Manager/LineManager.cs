@@ -71,7 +71,7 @@ namespace MGP_004CompoundBigWatermelon
         }
 
         /// <summary>
-        /// 瞄准线的显示隐藏，移动处理
+        /// 瞄准线的显示隐藏，移动位置处理
         /// </summary>
         void UpdateAimlineHandle() {
             if (Input.GetMouseButtonDown(0))
