@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace MGP_005CutFruit { 
 
+    /// <summary>
+    /// 游戏入口
+    /// </summary>
 	public class GameStart : MonoBehaviour
 	{
         private void Awake()

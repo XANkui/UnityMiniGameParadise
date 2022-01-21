@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace MGP_005CutFruit { 
 
+	/// <summary>
+	/// 数据模型
+	/// </summary>
 	public class Model 
 	{
 		private int m_Value;

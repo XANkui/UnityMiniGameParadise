@@ -23,7 +23,7 @@ namespace MGP_005CutFruit {
         {
             if (other.name.StartsWith( GameConfig.KNIFE_NAME))
             {
-                //减少一颗心
+                //减少生命值
                 m_DataModelManager.Life.Value -= GameConfig.BOMB_REDUCE_LIFE;
 
                 //产生爆炸特效
@@ -42,7 +42,9 @@ namespace MGP_005CutFruit {
         }
 
 
-
+        /// <summary>
+        /// 相机是野外事件
+        /// </summary>
         private void OnBecameInvisible()
         {
             if (m_IsRecycle == true)

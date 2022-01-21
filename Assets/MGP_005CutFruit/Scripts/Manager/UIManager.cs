@@ -38,8 +38,6 @@ namespace MGP_005CutFruit {
 
         public void Destroy()
         {
-            m_DataModelManager.Score.OnValueChanged -= OnScroeValueChanged;
-            m_DataModelManager.Life.OnValueChanged -= OnLifeValueChanged;
             m_RestartGameButton.onClick.RemoveAllListeners();
 
             m_LifeText = null;

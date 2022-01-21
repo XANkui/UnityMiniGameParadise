@@ -32,7 +32,10 @@ namespace MGP_005CutFruit {
             m_SpawnBombEffectPosTrans = null;
         }
 
-
+        /// <summary>
+        /// 获取爆炸特效
+        /// </summary>
+        /// <returns></returns>
         public BombEffect GetBombEffect()
         {
             if (m_BombEffectQueue.Count > 0)
@@ -47,16 +50,22 @@ namespace MGP_005CutFruit {
             }
         }
 
-
+        /// <summary>
+        /// 回收爆炸特效
+        /// </summary>
+        /// <param name="bombEffect"></param>
         public void RecycleBombEffect(BombEffect bombEffect)
         {
             bombEffect.gameObject.SetActive(false);
             m_BombEffectQueue.Enqueue(bombEffect);
         }
 
+        /// <summary>
+        /// 初始化特效
+        /// </summary>
         private void InitBombEffect()
         {
-
+            // 加载预制体
             m_BombEffectPrefab = Resources.Load<GameObject>(ResPathDefine.BOMB_EFFECT_PREFAB_PATH);
 
             // 预载 BombEffect

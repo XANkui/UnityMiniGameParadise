@@ -4,7 +4,9 @@ using UnityEngine;
 
 namespace MGP_005CutFruit
 { 
-
+	/// <summary>
+	/// 定义预制体路径类
+	/// </summary>
 	public class ResPathDefine 
 	{
 		public const string FRUIT_PREFAB_BASE_PATH = "Prefabs/CutFruits/";

@@ -18,7 +18,7 @@ namespace MGP_005CutFruit {
             m_Scroe = new Model();
             m_Scroe.Value = 0;
             m_Life = new Model();
-            m_Life.Value = 3;
+            m_Life.Value = GameConfig.GAME_LIFE_LENGTH;
         }
 
         public void Update()
@@ -28,11 +28,12 @@ namespace MGP_005CutFruit {
 
         public void Destroy()
         {
-            m_Scroe.Value = 0;
             m_Scroe.OnValueChanged = null;
+            m_Scroe.Value = 0;
             m_Scroe = null;
-            m_Life.Value = 0;
+
             m_Life.OnValueChanged = null;
+            m_Life.Value = 0;
             m_Life = null;
         }
     }

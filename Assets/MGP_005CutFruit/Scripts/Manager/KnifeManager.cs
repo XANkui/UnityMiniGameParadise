@@ -36,6 +36,9 @@ namespace MGP_005CutFruit
             m_KnifeTrans.gameObject.SetActive(false);
         }
 
+        /// <summary>
+        /// 加载预制体
+        /// </summary>
         void LoadPrefab() {
             m_KnifePrefab = Resources.Load<GameObject>(ResPathDefine.KNIFE_PREFAB_PATH);
             if (m_KnifePrefab == null)
@@ -49,6 +52,9 @@ namespace MGP_005CutFruit
             }
         }
 
+        /// <summary>
+        /// 游戏未结束时，鼠标按下更新刀锋
+        /// </summary>
         void UpdateShowKnife() {
             if (m_KnifeTrans!=null && m_IsGameOver==false)
             {

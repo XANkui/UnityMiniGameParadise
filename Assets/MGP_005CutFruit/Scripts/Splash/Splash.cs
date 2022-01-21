@@ -24,11 +24,22 @@ namespace MGP_005CutFruit
 			}
 		}
 
+		/// <summary>
+		/// 显示特效
+		/// </summary>
+		/// <param name="color"></param>
+		/// <param name="showAnimationEndAction"></param>
 		public void Show(Color32 color, Action<Splash> showAnimationEndAction)
 		{
 			StartCoroutine(EffectAnimation(color, showAnimationEndAction));
 		}
 
+		/// <summary>
+		/// 特效动画
+		/// </summary>
+		/// <param name="color"></param>
+		/// <param name="showAnimationEndAction"></param>
+		/// <returns></returns>
 		IEnumerator EffectAnimation(Color color, Action<Splash> showAnimationEndAction)
 		{
 			m_ColorValue = 0;

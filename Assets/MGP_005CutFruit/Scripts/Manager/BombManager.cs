@@ -31,6 +31,10 @@ namespace MGP_005CutFruit
             m_SpawnBombPosTrans = null;
         }
 
+        /// <summary>
+        /// 获取 Bomb 
+        /// </summary>
+        /// <returns></returns>
         public Bomb GetBmob()
         {
             if (m_BombQueue.Count > 0)
@@ -45,16 +49,22 @@ namespace MGP_005CutFruit
             }
         }
 
-
+        /// <summary>
+        /// 回收 Bomb 
+        /// </summary>
+        /// <param name="bomb"></param>
         public void RecycleBomb(Bomb bomb)
         {
             bomb.gameObject.SetActive(false);
             m_BombQueue.Enqueue(bomb);
         }
 
+        /// <summary>
+        /// 初始化
+        /// </summary>
         private void InitBmob()
         {
-
+            // 加载预制体
             m_BombPrefab = Resources.Load<GameObject>(ResPathDefine.BOMB_PREFAB_PATH);
 
             // 预载 Bomb

@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace MGP_005CutFruit {
 
+    /// <summary>
+    /// 游戏管理类
+    /// </summary>
     public class GameManager : IManager
     {
 
@@ -17,7 +20,9 @@ namespace MGP_005CutFruit {
 
         private Transform m_WorldTrans;
         private Transform m_UITrans;
+
         private MonoBehaviour m_Mono;
+
         private float m_Bottom_Spawn_X_Min;
         private float m_Bottom_Spawn_X_Max;
         private float m_Bottom_Spawn_Y;
@@ -82,10 +87,10 @@ namespace MGP_005CutFruit {
 
         public void Destroy()
         {
+            m_DataModelManager.Destroy();
             m_FruitManager.Destroy();
             m_UIManager.Destroy();
             m_SplashManager.Destroy();
-            m_DataModelManager.Destroy();
             m_KnifeManager.Destroy();
             m_BmobManager.Destroy();
             m_BombEffectManager.Destroy();

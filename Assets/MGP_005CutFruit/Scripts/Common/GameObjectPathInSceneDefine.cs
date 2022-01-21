@@ -5,6 +5,9 @@ using UnityEngine;
 namespace MGP_005CutFruit
 { 
 
+	/// <summary>
+	/// 定义场景中的游戏物体路径类
+	/// </summary>
 	public class GameObjectPathInSceneDefine 
 	{
 		public const string WORLD_PATH = "World";

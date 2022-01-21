@@ -33,7 +33,10 @@ namespace MGP_005CutFruit
             m_SpawnSplashPosTrans = null;
         }
 
-
+        /// <summary>
+        /// 获取 Splash
+        /// </summary>
+        /// <returns></returns>
         public Splash GetSplash()
         {
             if (m_SplashQueue.Count > 0)
@@ -48,16 +51,22 @@ namespace MGP_005CutFruit
             }
         }
 
-
+        /// <summary>
+        /// 回收 Splash
+        /// </summary>
+        /// <param name="splash"></param>
         public void RecycleSplah(Splash splash)
         {
             splash.gameObject.SetActive(false);
             m_SplashQueue.Enqueue(splash);
         }
 
+        /// <summary>
+        /// 初始化 SPlash
+        /// </summary>
         private void InitSplash()
         {
-
+            // 加载预制体
             m_SplashPrefab = Resources.Load<GameObject>(ResPathDefine.SPLASH_PREFAB_PATH);
 
             // 预载Splash
