@@ -19,3 +19,9 @@
 
 2、游戏效果预览：![image](https://github.com/XANkui/UnityMiniGameParadise/blob/main/ReadMe_Images/JumpJump.gif)
 
+## 四、Compound Big Watermelon 合成一个大西瓜 （MGP_004CompoundBigWatermelon）
+
+1、游戏实现过程说明地址：https://blog.csdn.net/u014361280/article/details/122519355
+
+2、游戏效果预览：![image](https://github.com/XANkui/UnityMiniGameParadise/blob/main/ReadMe_Images/BigWatermelon.gif)
+
