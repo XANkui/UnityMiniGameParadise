@@ -25,3 +25,8 @@
 
 2、游戏效果预览：![image](https://github.com/XANkui/UnityMiniGameParadise/blob/main/ReadMe_Images/BigWatermelon.gif)
 
+## 五、Cut Fruit 切水果/水果忍者 （MGP_005CutFruit）
+
+1、游戏实现过程说明地址：https://blog.csdn.net/u014361280/article/details/122616242
+
+2、游戏效果预览：![image](https://github.com/XANkui/UnityMiniGameParadise/blob/main/ReadMe_Images/CutFruit.gif)
