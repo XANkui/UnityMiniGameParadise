@@ -4,16 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Planet
-  - Enemy
-  - Bonus
-  - Projectile
-  - Score
-  - Health
-  - CoinsText
-  - Coin
-  - PlayerRay
-  - Rocket
+  - Pipe
   layers:
   - Default
   - TransparentFX
@@ -51,24 +42,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
+  - name: 
     uniqueID: 1947543829
     locked: 0
-  - name: Planets
+  - name: 
     uniqueID: 4094135763
     locked: 0
-  - name: Projectile
+  - name: 
     uniqueID: 1111697911
     locked: 0
-  - name: Enemy
+  - name: 
     uniqueID: 1152134415
     locked: 0
-  - name: Bonus
+  - name: 
     uniqueID: 689362467
     locked: 0
-  - name: Player
+  - name: 
     uniqueID: 2402381985
     locked: 0
-  - name: VFX
+  - name: 
     uniqueID: 738997965
     locked: 0
