@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace MGP_006FlappyBird { 
 
+	/// <summary>
+	/// 场景中的游戏物体路径定义
+	/// </summary>
 	public class GameObjectPathInSceneDefine 
 	{
 		public const string WORLD_PATH = "World";

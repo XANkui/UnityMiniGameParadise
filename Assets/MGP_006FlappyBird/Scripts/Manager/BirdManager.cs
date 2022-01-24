@@ -15,6 +15,12 @@ namespace MGP_006FlappyBird {
         private bool m_IsPause;
         private bool m_IsGameOver;
         public bool IsGameOver => m_IsGameOver;
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="rootTrans"></param>
+        /// <param name="managers"></param>
         public void Init(Transform rootTrans, params object[] managers)
         {
             m_SpawnBirdPosTrans = rootTrans.Find(GameObjectPathInSceneDefine.SPAWN_BIRD_POS_PATH);
@@ -62,6 +68,9 @@ namespace MGP_006FlappyBird {
             m_Bird.GameOver();
         }
 
+        /// <summary>
+        /// 加载实例化鸟
+        /// </summary>
         private void LoadPrefab()
         {
             GameObject prefab = m_ResLoadManager.LoadPrefab(ResPathDefine.PREFAB_BIRD_PATH);
@@ -71,6 +80,9 @@ namespace MGP_006FlappyBird {
             m_Bird.Init(OnBirdGroundCollisionEnter, OnBirdScoreCollisionEnter);
         }
 
+        /// <summary>
+        /// 监听是否鼠标按下，向上飞
+        /// </summary>
         private void UpdatePosOperation()
         {
 
@@ -82,16 +94,22 @@ namespace MGP_006FlappyBird {
             }
         }
 
+        /// <summary>
+        /// 游戏结束事件
+        /// </summary>
         private void OnBirdGroundCollisionEnter() {
             m_AudioManager.PlayAudio(AudioClipSet.Collider);
             m_IsGameOver = true;
 
         }
 
+        /// <summary>
+        /// 游戏加分事件
+        /// </summary>
         private void OnBirdScoreCollisionEnter()
         {
             m_AudioManager.PlayAudio(AudioClipSet.Tip);
-            m_DataModelManager.Score.Value += 10;
+            m_DataModelManager.Score.Value += GameConfig.PASS_PIPE_GET_SCORE;
 
         }
     }

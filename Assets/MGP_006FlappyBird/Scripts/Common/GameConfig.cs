@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
 
 namespace MGP_006FlappyBird
 { 
-
+	/// <summary>
+	/// 一些游戏配置
+	/// </summary>
 	public class GameConfig 
 	{
 		public const float BACKGROUND_SPRITE_INTERVAL_X = 20.25f;
@@ -19,5 +19,10 @@ namespace MGP_006FlappyBird
 
 		public const float PIPE_SPAWN_POS_RIGHT_LIMIT_X = 3.5f;
 		public const float PIPE_MOVE_POS_LEFT_LIMIT_X = 3.5f;
+
+		public const int PASS_PIPE_GET_SCORE = 10;
+
+		public const string GROUND_EDGE_COLLIDER2D_NAME = "GroundEdgeCollider2D";
+		public const string SCORE_EDGE_COLLIDER2D_NAME = "ScoreEdgeCollider2D";
 	}
 }

@@ -83,6 +83,11 @@ namespace MGP_006FlappyBird {
 			
 		}
 
+
+		/// <summary>
+		/// 位置更新
+		/// 判断位置是否到达指定位置，进行对象回收
+		/// </summary>
 		private void UpdatePosOperation()
 		{
 

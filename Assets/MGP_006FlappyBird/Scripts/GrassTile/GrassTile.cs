@@ -76,6 +76,10 @@ namespace MGP_006FlappyBird
 			Rigidbody2D.velocity = m_Velocity;
 		}
 
+		/// <summary>
+		/// 更新草地背景位置
+		/// 当位置到达指定位置，进行位置左移，从而实现无限循环
+		/// </summary>
 		private void UpdatePosOperation()
 		{
 

@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MGP_006FlappyBird
-{ 
-
+{
+	/// <summary>
+	/// 天空背景
+	/// 移动是 Rigidbody2D.velocity 
+	/// </summary>
 	public class SkyTile : MonoBehaviour
 	{
 
@@ -67,11 +70,16 @@ namespace MGP_006FlappyBird
 		{
 			Rigidbody2D.velocity = Vector2.zero;
 		}
+
 		private void Move()
 		{
 			Rigidbody2D.velocity = m_Velocity;
 		}
 
+		/// <summary>
+		/// 更新天空背景位置
+		/// 当位置到达指定位置，进行位置左移，从而实现无限循环
+		/// </summary>
 		private void UpdatePosOperation() {
 
 

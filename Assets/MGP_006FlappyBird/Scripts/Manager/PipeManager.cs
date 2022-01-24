@@ -18,6 +18,11 @@ namespace MGP_006FlappyBird {
         private float m_SpawnPosX = 0;
         private float m_TargetMovePosX = 0;
 
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="rootTrans"></param>
+        /// <param name="managers"></param>
         public void Init(Transform rootTrans, params object[] managers)
         {
             m_SpawnPipePosTrans = rootTrans.Find(GameObjectPathInSceneDefine.SPAWN_PIPE_POS_PATH);
@@ -87,11 +92,19 @@ namespace MGP_006FlappyBird {
             }
         }
 
+        /// <summary>
+        /// 预载实例化对象
+        /// </summary>
+        /// <param name="prefab"></param>
+        /// <param name="parent"></param>
         private void LoadPrefab(GameObject prefab,Transform parent)
         {
             PreloadT(prefab, parent);
         }
 
+        /// <summary>
+        /// 计时生成管子，以及初始化管子和设置回收管子事件
+        /// </summary>
         void UpdateSpawnPipe() {
 
             m_SpawnTimer += Time.deltaTime;

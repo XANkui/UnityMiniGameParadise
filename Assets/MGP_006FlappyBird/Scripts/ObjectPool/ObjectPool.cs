@@ -5,7 +5,7 @@ using UnityEngine;
 namespace MGP_006FlappyBird { 
 
     /// <summary>
-    /// 对象池
+    /// 泛型对象池
     /// </summary>
     /// <typeparam name="T"></typeparam>
 	public class ObjectPool<T>  where T : MonoBehaviour
@@ -71,7 +71,7 @@ namespace MGP_006FlappyBird {
             {
                 while (m_TQueue.Count > 0)
                 {
-                    GameObject.Destroy(m_TQueue.Dequeue());
+                    GameObject.Destroy(m_TQueue.Dequeue().gameObject);
                 }
             }
 

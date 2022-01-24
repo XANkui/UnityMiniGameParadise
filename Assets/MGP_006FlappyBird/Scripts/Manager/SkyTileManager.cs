@@ -10,6 +10,12 @@ namespace MGP_006FlappyBird
         private ResLoadManager m_ResLoadManager;
         private Transform m_SpawnSkyTilePosTrans;
         private List<GameObject> m_SkyTileList;
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="rootTrans"></param>
+        /// <param name="managers"></param>
         public void Init(Transform rootTrans, params object[] managers)
         {
             m_SpawnSkyTilePosTrans = rootTrans.Find(GameObjectPathInSceneDefine.SPAWN_SKY_TILE_POS_PATH);
@@ -39,6 +45,9 @@ namespace MGP_006FlappyBird
             m_SpawnSkyTilePosTrans = null;
         }
 
+        /// <summary>
+        /// 加载预制体
+        /// </summary>
         private void LoadPrefab() {
             GameObject prefab = m_ResLoadManager.LoadPrefab(ResPathDefine.PREFAB_SKY_TILE_PATH);
             for (int i = 0; i < GameConfig.BACKGROUND_TILE_COUNT; i++)

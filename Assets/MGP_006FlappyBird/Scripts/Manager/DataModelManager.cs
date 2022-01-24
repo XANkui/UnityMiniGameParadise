@@ -8,7 +8,6 @@ namespace MGP_006FlappyBird {
 	{
         private Model m_Scroe;
 
-
         public Model Score => m_Scroe;
 
         public void Init(Transform rootTrans, params object[] manager)

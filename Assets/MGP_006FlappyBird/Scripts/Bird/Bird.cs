@@ -55,9 +55,11 @@ namespace MGP_006FlappyBird {
 			m_UpVelocity = Vector2.up * GameConfig.BIRD_MOVE_UP_Y;
 			PlayFlyAnimation();
 		}
+
 		public void Fly() {
 			Rigidbody2D.velocity = m_UpVelocity;
 		}
+
 		public void Resume()
 		{
 			
@@ -87,26 +89,30 @@ namespace MGP_006FlappyBird {
 		}
 
 		private void PlayIdleAnimation() {
-			Animator.SetBool("IsFly",false);
-			Animator.SetBool("IsDie",false);
+			Animator.SetBool(AnimatorParametersDefine.IS_FLY, false);
+			Animator.SetBool(AnimatorParametersDefine.IS_DIE, false);
 		}
 
 		private void PlayFlyAnimation()
 		{
-			Animator.SetBool("IsFly", true);
-			Animator.SetBool("IsDie", false);
+			Animator.SetBool(AnimatorParametersDefine.IS_FLY, true);
+			Animator.SetBool(AnimatorParametersDefine.IS_DIE, false);
 		}
 
 		private void PlayDieAnimation()
 		{
-			Animator.SetBool("IsFly", false);
-			Animator.SetBool("IsDie", true);
+			Animator.SetBool(AnimatorParametersDefine.IS_FLY, false);
+			Animator.SetBool(AnimatorParametersDefine.IS_DIE, true);
 		}
 
+		/// <summary>
+		/// 触发死亡碰撞
+		/// </summary>
+		/// <param name="collision"></param>
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.collider.name.StartsWith("GroundEdgeCollider2D") 
-				|| collision.collider.CompareTag("Pipe"))
+            if (collision.collider.name.StartsWith(GameConfig.GROUND_EDGE_COLLIDER2D_NAME) 
+				|| collision.collider.CompareTag(TagDefine.PIPE))
             {
                 if (m_OnGroundCollisionEnter2D!=null)
                 {
@@ -118,9 +124,13 @@ namespace MGP_006FlappyBird {
 			
 		}
 
+		/// <summary>
+		/// 触发加分碰撞
+		/// </summary>
+		/// <param name="collision"></param>
         private void OnTriggerEnter2D(Collider2D collision)
         {
-			if (collision.name.StartsWith("ScoreEdgeCollider2D"))
+			if (collision.name.StartsWith(GameConfig.SCORE_EDGE_COLLIDER2D_NAME))
 			{
 				if (m_OnScoreCollisionEnter2D != null)
 				{

@@ -10,6 +10,12 @@ namespace MGP_006FlappyBird
         private ResLoadManager m_ResLoadManager;
         private Transform m_SpawnGrassTilePosTrans;
         private List<GrassTile> m_GrassTileList;
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="rootTrans"></param>
+        /// <param name="managers"></param>
         public void Init(Transform rootTrans, params object[] managers)
         {
             m_SpawnGrassTilePosTrans = rootTrans.Find(GameObjectPathInSceneDefine.SPAWN_GRASS_TILE_POS_PATH);
@@ -63,6 +69,9 @@ namespace MGP_006FlappyBird
             }
         }
 
+        /// <summary>
+        /// 加载实例化预制体
+        /// </summary>
         private void LoadPrefab()
         {
             GameObject prefab = m_ResLoadManager.LoadPrefab(ResPathDefine.PREFAB_GRASS_TILE_PATH);

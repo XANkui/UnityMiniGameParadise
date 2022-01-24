@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace MGP_006FlappyBird { 
 
+    /// <summary>
+    /// 预制体加载管理类
+    /// </summary>
 	public class ResLoadManager : IManager
 	{
         public Dictionary<string, GameObject> m_PrefabsDict;
@@ -18,6 +21,9 @@ namespace MGP_006FlappyBird {
         public void Update()
         {
         }
+        public void GameOver()
+        {
+        }
 
         public void Destroy()
         {
@@ -27,6 +33,11 @@ namespace MGP_006FlappyBird {
             m_AudioClipsDict = null;
         }
 
+        /// <summary>
+        /// 加载预制体 GameObject 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public GameObject LoadPrefab(string path) {
             if (m_PrefabsDict.ContainsKey(path) == true)
             {
@@ -43,6 +54,11 @@ namespace MGP_006FlappyBird {
             }
         }
 
+        /// <summary>
+        /// 加载预制体 AudioClip 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public AudioClip LoadAudioClip(string path)
         {
             if (m_AudioClipsDict.ContainsKey(path) == true)
@@ -61,6 +77,12 @@ namespace MGP_006FlappyBird {
             }
         }
 
+        /// <summary>
+        /// 泛型加载预制体
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="path"></param>
+        /// <returns></returns>
         private T Load<T>(string path) where T:Object{
             T prefab = Resources.Load<T>(path);
             if (prefab == null)
@@ -71,8 +93,6 @@ namespace MGP_006FlappyBird {
             return prefab;
         }
 
-        public void GameOver()
-        {
-        }
+        
     }
 }

@@ -10,6 +10,12 @@ namespace MGP_006FlappyBird {
         private Transform m_AudioSourceTrans;
         private AudioSource m_AudioSource;
         private Dictionary<AudioClipSet, AudioClip> m_AudioClipDict;
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="rootTrans"></param>
+        /// <param name="managers"></param>
         public void Init(Transform rootTrans, params object[] managers)
         {
             m_AudioSourceTrans = rootTrans.Find(GameObjectPathInSceneDefine.AUDIO_SOURCE_TRANS_PATH);
@@ -35,6 +41,10 @@ namespace MGP_006FlappyBird {
         {
         }
 
+        /// <summary>
+        /// 播放指定音频
+        /// </summary>
+        /// <param name="audioName"></param>
         public void PlayAudio(AudioClipSet audioName) {
             if (m_AudioClipDict.ContainsKey(audioName) == true)
             {

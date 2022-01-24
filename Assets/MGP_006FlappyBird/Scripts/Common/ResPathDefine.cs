@@ -4,7 +4,9 @@ using UnityEngine;
 
 namespace MGP_006FlappyBird
 { 
-
+	/// <summary>
+	/// 预制体路径定义类
+	/// </summary>
 	public class ResPathDefine 
 	{
 		public const string PREFAB_SKY_TILE_PATH = "Prefabs/SkyTile";
