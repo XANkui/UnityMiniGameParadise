@@ -30,3 +30,10 @@
 1、游戏实现过程说明地址：https://blog.csdn.net/u014361280/article/details/122616242
 
 2、游戏效果预览：![image](https://github.com/XANkui/UnityMiniGameParadise/blob/main/ReadMe_Images/CutFruit.gif)
+
+## 六、Flappy Bird 像素鸟 （MGP_006FlappyBird）
+
+1、游戏实现过程说明地址：https://blog.csdn.net/u014361280/article/details/122648699
+
+2、游戏效果预览：![image](https://github.com/XANkui/UnityMiniGameParadise/blob/main/ReadMe_Images/FlappyBird.gif)
+
