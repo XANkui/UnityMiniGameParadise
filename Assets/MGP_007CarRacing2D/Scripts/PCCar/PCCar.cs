@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,16 +10,12 @@ namespace MGP_007CarRacing2D {
 		private Vector2 m_MoveRightVelocity;
 		private Vector2 m_CurVelocity;
 
-
 		private Rigidbody2D m_Rigidbody2D;
 
 		private Action m_OnNPCCollisionEnter2D;
 		private Action<GameObject> m_OnCoinCollisionEnter2D;
 
-		private Vector3 m_RotateLeft = Vector3.left * 20;
-		private Vector3 m_RotateRight = Vector3.right * 20;
-
-		private float m_RotateSpeed = 5;
+		private float m_RotateAnimationSpeed = 5;
 		private float m_HalfWidth;
 		private CarRoateDir m_CurCarRoateDir;
 
@@ -49,15 +43,10 @@ namespace MGP_007CarRacing2D {
 
 			m_HalfWidth = Screen.width / 2;
 
-			m_MoveLeftVelocity = Vector2.left * 5;
-			m_MoveRightVelocity = Vector2.right * 5;
+			m_MoveLeftVelocity = Vector2.left * GameConfig.CAR_ROTATE_VELOCITY_VALUE_LIMIT;
+			m_MoveRightVelocity = Vector2.right * GameConfig.CAR_ROTATE_VELOCITY_VALUE_LIMIT;
 
 			m_CurCarRoateDir = CarRoateDir.Normal;
-		}
-
-		public void ChangeLane(Vector2 dirVelocity)
-		{
-			Rigidbody2D.velocity = dirVelocity;
 		}
 
 		public void Resume()
@@ -69,6 +58,7 @@ namespace MGP_007CarRacing2D {
 		public void Pause()
 		{
 			m_CurVelocity = Rigidbody2D.velocity;
+			Rigidbody2D.velocity = Vector2.zero;
 
 		}
 
@@ -78,17 +68,20 @@ namespace MGP_007CarRacing2D {
 			Rigidbody2D.velocity = Vector2.zero;
 		}
 
+		/// <summary>
+		/// 车子切道转向
+		/// </summary>
 		public void UpdateChangeLaneRotation() {
 
 			if (Input.GetMouseButtonDown(0)
 				   && EventSystem.current.IsPointerOverGameObject() == false)// 不是点击 UI
 			{
-				if (Input.mousePosition.x <= m_HalfWidth)
+				if (Input.mousePosition.x <= m_HalfWidth)  // 左转
 				{
 					m_CurCarRoateDir = CarRoateDir.Left;
 					Rigidbody2D.velocity = m_MoveLeftVelocity;
 				}
-				else {
+				else {									// 右转
 					m_CurCarRoateDir = CarRoateDir.Right;
 					Rigidbody2D.velocity = m_MoveRightVelocity;
 				}
@@ -102,6 +95,10 @@ namespace MGP_007CarRacing2D {
 			UpdateLimitPos();
 		}
 
+		/// <summary>
+		/// 旋转
+		/// </summary>
+		/// <param name="dir"></param>
 		private void RotateSelf(CarRoateDir dir) {
             switch (dir)
             {
@@ -109,10 +106,10 @@ namespace MGP_007CarRacing2D {
 					RotateLerp(0);
 					break;
                 case CarRoateDir.Left:
-					RotateLerp(20);
+					RotateLerp(GameConfig.CAR_ROTATE_POS_VALUE_LIMIT);
 					break;
                 case CarRoateDir.Right:
-					RotateLerp(-20);
+					RotateLerp(-1 * GameConfig.CAR_ROTATE_POS_VALUE_LIMIT);
 					break;
 
                 default:
@@ -121,42 +118,50 @@ namespace MGP_007CarRacing2D {
             }
         }
 
+		/// <summary>
+		/// 旋转插值动画
+		/// </summary>
+		/// <param name="target"></param>
 		private void RotateLerp(float target) {
 			Vector3 curRot = transform.eulerAngles;
-			if (curRot.z <= 270)
+			if (curRot.z <= 90)
 			{
-				curRot.z = Mathf.Lerp(curRot.z, target, Time.deltaTime * m_RotateSpeed);
+				curRot.z = Mathf.Lerp(curRot.z, target, Time.deltaTime * m_RotateAnimationSpeed);
 			}
 			else { // 修正右边旋转赋值，会赋值转为对应正值旋转值（例如 -5，自动转为 360 +（-5））
-				curRot.z = Mathf.Lerp(curRot.z, 360+target, Time.deltaTime * m_RotateSpeed);
+				curRot.z = Mathf.Lerp(curRot.z, 360+target, Time.deltaTime * m_RotateAnimationSpeed);
 			}
 			// Debug.Log(curRot.z);
 			transform.eulerAngles = curRot;
 		}
 
+		/// <summary>
+		/// 车子位置限制
+		/// </summary>
         private void UpdateLimitPos()
         {
 			Vector3 curPos = transform.position;
-			if (curPos.x <= -1.6f)
+			if (curPos.x <= GameConfig.CAR_LEFT_OUTSIDE_LIMIT)
 			{
-				curPos.x = -1.6f;
+				curPos.x = GameConfig.CAR_LEFT_OUTSIDE_LIMIT;
 
 			}
-			else if (curPos.x >= 1.6f)
+			else if (curPos.x >= GameConfig.CAR_RIGHT_OUTSIDE_LIMIT)
 			{
-				curPos.x = 1.6f;
+				curPos.x = GameConfig.CAR_RIGHT_OUTSIDE_LIMIT;
 			}
 
 			transform.position = curPos;
 
 		}
+
         /// <summary>
         /// 触发碰撞
         /// </summary>
         /// <param name="collision"></param>
         private void OnTriggerEnter2D(Collider2D collision)
 		{
-			if ( collision.CompareTag(Tag.COIN))
+			if ( collision.CompareTag(Tag.COIN))   // 吃金币
 			{
 				if (m_OnCoinCollisionEnter2D != null)
 				{
@@ -165,7 +170,7 @@ namespace MGP_007CarRacing2D {
 				}
 			}
 
-			if (collision.CompareTag(Tag.NPC_CAR))
+			if (collision.CompareTag(Tag.NPC_CAR))  // 撞车
 			{
 				if (m_OnNPCCollisionEnter2D != null)
 				{

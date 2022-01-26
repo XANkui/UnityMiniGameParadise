@@ -5,7 +5,7 @@ using UnityEngine;
 namespace MGP_007CarRacing2D
 { 
 
-	public class Tools : MonoBehaviour
+	public class Tools 
 	{
 		/// <summary>
 		/// 把屏幕坐标转为世界坐标
@@ -28,6 +28,7 @@ namespace MGP_007CarRacing2D
 
 		/// <summary>
 		/// 2D游戏 屏幕适配 
+		/// vaildWidth =（Screen.width/Screen.height*2*orthographicSize）
 		/// </summary>
 		/// <param name="BaseScreenWitdh">开发时的参考屏幕宽</param>
 		/// <param name="BaseScreenHeight">开发时的参考屏幕高</param>

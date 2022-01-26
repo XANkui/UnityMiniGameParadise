@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 namespace MGP_007CarRacing2D { 
@@ -48,13 +47,16 @@ namespace MGP_007CarRacing2D {
             m_IsAddScroe = false;
         }
 
+        /// <summary>
+        /// 行程加分
+        /// </summary>
         void UpdateDistanceScore()
         {
             m_Timer += Time.deltaTime;
             if (m_Timer>= (1.0f/GameConfig.ROAD_MOVEVELOCITY_Y))
             {
                 m_Timer -= (1.0f / GameConfig.ROAD_MOVEVELOCITY_Y);
-                m_DataModelManager.Score.Value += 1;
+                m_DataModelManager.Score.Value += GameConfig.DRIVING_DISTANCE_SCORE;
 
             }
         }

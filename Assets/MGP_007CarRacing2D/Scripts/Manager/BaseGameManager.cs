@@ -12,8 +12,6 @@ namespace MGP_007CarRacing2D {
         private Dictionary<Type, object> m_ManagerDict ;
         private Dictionary<Type, object> m_ServerDict ;
 
-
-
         public virtual void Awake(MonoBehaviour mono) {
             m_Mono = mono;
             m_ManagerDict = new Dictionary<Type, object>();
@@ -23,8 +21,7 @@ namespace MGP_007CarRacing2D {
         public virtual void Start() {
 
             Init(null);
-           
-            
+
         }
 
         /// <summary>
@@ -75,8 +72,11 @@ namespace MGP_007CarRacing2D {
             m_Mono = null;
         }
 
-
-
+        /// <summary>
+        /// 注册 Manager
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="manager"></param>
         protected void RegisterManager<T>(T manager) where T : IManager
         {
             Type t = typeof(T);
@@ -89,6 +89,12 @@ namespace MGP_007CarRacing2D {
                 m_ManagerDict.Add(t, manager);
             }
         }
+        
+        /// <summary>
+        /// 注册 Server
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="server"></param>
         protected void RegisterServer<T>(T server) where T : IServer
         {
             Type t = typeof(T);
@@ -102,6 +108,12 @@ namespace MGP_007CarRacing2D {
             }
         }
 
+        /// <summary>
+        /// 获取指定 Manger 
+        /// (可以设置 public 或许更合适)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         protected T GetManager<T>() where T : class
         {
             Type t = typeof(T);
@@ -115,6 +127,13 @@ namespace MGP_007CarRacing2D {
                 return null;
             }
         }
+
+        /// <summary>
+        /// 获取指定 Server 
+        /// (可以设置 public 或许更合适)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         protected T GetServer<T>() where T : class
         {
             Type t = typeof(T);

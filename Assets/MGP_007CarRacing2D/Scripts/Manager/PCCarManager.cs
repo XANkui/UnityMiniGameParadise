@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MGP_007CarRacing2D { 
@@ -77,7 +75,7 @@ namespace MGP_007CarRacing2D {
         {
             GameObject prefab = m_ResLoadServer.LoadPrefab(ResPathDefine.PREFAB_PC_CAR_PATH);
             GameObject car = GameObject.Instantiate(prefab, m_SpawnPCCarPos);
-            car.transform.position = Vector3.right * UnityEngine.Random.Range(-1.6f,1.6f);
+            car.transform.position = Vector3.right * UnityEngine.Random.Range(GameConfig.CAR_LEFT_OUTSIDE_LIMIT,GameConfig.CAR_RIGHT_OUTSIDE_LIMIT);
             m_PCCar = car.AddComponent<PCCar>();
 
             m_PCCar.Init(OnNPCCarCollisionEnter, OnCoinCollisionEnter);
@@ -102,7 +100,7 @@ namespace MGP_007CarRacing2D {
         {
             m_AudioServer.PlayAudio(AudioClipSet.Bonus);
 
-            m_DataModelManager.Score.Value += 10;
+            m_DataModelManager.Score.Value += GameConfig.ENTER_COIN_SCORE;
 
             m_ObjectPoolManager.ReleaseObject(coinClone);
 

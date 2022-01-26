@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace MGP_007CarRacing2D { 
@@ -33,10 +32,10 @@ namespace MGP_007CarRacing2D {
             m_SpawnTimer = 0;
 
             m_SpawnPosArray = new Vector3[4];
-            m_SpawnPosArray[0] = new Vector3(-1.6f,Tools.ScreenPosToWorldPos(m_SpawnNPCPosTrans, Camera.main, Vector2.up * (Screen.height * (1 + 0.2f))).y,0);
-            m_SpawnPosArray[1] = new Vector3(-0.55f,Tools.ScreenPosToWorldPos(m_SpawnNPCPosTrans, Camera.main, Vector2.up * (Screen.height * (1 + 0.2f))).y,0);
-            m_SpawnPosArray[2] = new Vector3(0.55f,Tools.ScreenPosToWorldPos(m_SpawnNPCPosTrans, Camera.main, Vector2.up * (Screen.height * (1 + 0.2f))).y,0);
-            m_SpawnPosArray[3] = new Vector3(1.6f,Tools.ScreenPosToWorldPos(m_SpawnNPCPosTrans, Camera.main, Vector2.up * (Screen.height * (1 + 0.2f))).y,0);
+            m_SpawnPosArray[0] = new Vector3(GameConfig.CAR_LEFT_OUTSIDE_LIMIT,Tools.ScreenPosToWorldPos(m_SpawnNPCPosTrans, Camera.main, Vector2.up * (Screen.height * (1 + 0.2f))).y,0);
+            m_SpawnPosArray[1] = new Vector3(GameConfig.CAR_LEFT_MIDDLE_LIMIT, Tools.ScreenPosToWorldPos(m_SpawnNPCPosTrans, Camera.main, Vector2.up * (Screen.height * (1 + 0.2f))).y,0);
+            m_SpawnPosArray[2] = new Vector3(GameConfig.CAR_RIGHT_MIDDLE_LIMIT, Tools.ScreenPosToWorldPos(m_SpawnNPCPosTrans, Camera.main, Vector2.up * (Screen.height * (1 + 0.2f))).y,0);
+            m_SpawnPosArray[3] = new Vector3(GameConfig.CAR_RIGHT_OUTSIDE_LIMIT, Tools.ScreenPosToWorldPos(m_SpawnNPCPosTrans, Camera.main, Vector2.up * (Screen.height * (1 + 0.2f))).y,0);
             m_TargetMovePosY = Tools.ScreenPosToWorldPos(m_SpawnNPCPosTrans, Camera.main, Vector2.down * (Screen.height * (0.2f))).y;
             
             m_NPCMoveVelocity = Vector2.down * GameConfig.ROAD_MOVEVELOCITY_Y;
@@ -95,6 +94,9 @@ namespace MGP_007CarRacing2D {
            
         }
 
+        /// <summary>
+        /// 加载预制体
+        /// </summary>
         private void LoadPrefab() {
 
             for (NPCType npc = NPCType.Coin; npc < NPCType.SUM_COUNT; npc++)
@@ -123,6 +125,9 @@ namespace MGP_007CarRacing2D {
             }
         }
 
+        /// <summary>
+        /// 判断位置，回收对象
+        /// </summary>
         void UpdateNPCPosRecycle() {
             if (m_ShowNPCTransformList!=null)
             {

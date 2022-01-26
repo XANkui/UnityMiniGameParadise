@@ -67,10 +67,7 @@ namespace MGP_007CarRacing2D {
 
         public void GamePause()
         {
-            foreach (Rigidbody2D rigidbody2D in m_RoadRigidbodyList)
-            {
-                rigidbody2D.velocity = Vector2.zero;
-            }
+            RoadStop();
         }
 
         public void GameResume()
@@ -80,10 +77,7 @@ namespace MGP_007CarRacing2D {
 
         public void GameOver()
         {
-            foreach (Rigidbody2D rigidbody2D in m_RoadRigidbodyList)
-            {
-                rigidbody2D.velocity = Vector2.zero;
-            }
+            RoadStop();
         }
 
         /// <summary>
@@ -127,6 +121,13 @@ namespace MGP_007CarRacing2D {
             foreach (Rigidbody2D rigidbody2D in m_RoadRigidbodyList)
             {
                 rigidbody2D.velocity = m_RoadMoveVelocity;
+            }
+        }
+
+        void RoadStop() {
+            foreach (Rigidbody2D rigidbody2D in m_RoadRigidbodyList)
+            {
+                rigidbody2D.velocity = Vector2.zero;
             }
         }
     }

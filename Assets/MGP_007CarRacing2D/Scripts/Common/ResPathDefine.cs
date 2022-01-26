@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace MGP_007CarRacing2D { 
 
+	/// <summary>
+	/// 预制体路径定义类
+	/// </summary>
 	public class ResPathDefine 
 	{
 		public const string AUDIO_CLIP_BASE_PATH = "Sounds/";

@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace MGP_007CarRacing2D { 
 
+	/// <summary>
+	/// 场景中的游戏物体定义
+	/// </summary>
 	public class GameObjectPathInSceneDefine 
 	{
 		public const string WORLD_PATH = "World";

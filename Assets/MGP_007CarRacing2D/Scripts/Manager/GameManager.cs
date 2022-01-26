@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 namespace MGP_007CarRacing2D { 
@@ -44,7 +43,7 @@ namespace MGP_007CarRacing2D {
             m_Camera = m_WorldTrans.Find(GameObjectPathInSceneDefine.MAIN_CAMERA_PATH).GetComponent<Camera>();
 
             // 2D 游戏屏幕适配
-            Tools.AdaptationFor2DGame(1080,1920, m_Camera);
+            Tools.AdaptationFor2DGame(GameConfig.GAME_DEVELOP_BASE_SCREEN_WIDTH, GameConfig.GAME_DEVELOP_BASE_SCREEN_HEIGHT, m_Camera);
 
             m_ResLoadServer = new ResLoadServer();
             m_AudioServer = new AudioServer();
