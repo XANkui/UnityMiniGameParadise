@@ -43,4 +43,10 @@
 
 2、游戏效果预览：![image](https://github.com/XANkui/UnityMiniGameParadise/blob/main/ReadMe_Images/CarRacing2D.gif)
 
+## 八、Circus 马戏团 （MGP_008Circus）
+
+1、游戏实现过程说明地址：https://blog.csdn.net/u014361280/article/details/122742394
+
+2、游戏效果预览：![image](https://github.com/XANkui/UnityMiniGameParadise/blob/main/ReadMe_Images/Circus.gif)
+
 
