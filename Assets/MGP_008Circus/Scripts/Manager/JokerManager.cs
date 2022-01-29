@@ -65,7 +65,7 @@ namespace MGP_008Circus {
         }
 
         /// <summary>
-        /// 加载实例化鸟
+        /// 加载实例化 Joker 
         /// </summary>
         private void LoadPrefab()
         {
@@ -97,7 +97,7 @@ namespace MGP_008Circus {
         }
 
         /// <summary>
-        /// 游戏结束事件
+        /// 游戏碰撞火圈和地面事件
         /// </summary>
         private void OnJokerColliderCollisionEnter(Collision2D collision)
         {

@@ -43,17 +43,27 @@ namespace MGP_008Circus {
             m_DataModelManager = null;
         }
 
+        /// <summary>
+        /// 游戏结束
+        /// </summary>
         public void GameOver()
         {
             m_GameOverImageGo.SetActive(true);
 
         }
 
+        /// <summary>
+        /// 更新分数显示
+        /// </summary>
+        /// <param name="score"></param>
         private void OnScroeValueChanged(int score)
         {
             m_ScoreText.text = score.ToString();
         }
 
+        /// <summary>
+        /// 重新开始按钮事件
+        /// </summary>
         private void OnRestartButton()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

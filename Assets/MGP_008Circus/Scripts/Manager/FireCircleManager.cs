@@ -83,12 +83,11 @@ namespace MGP_008Circus {
         /// </summary>
         private void LoadPrefab()
         {
-
             m_FireCirclePrefab = m_ResLoadServer.LoadPrefab(ResPathDefine.PREFAB_FIRECIRCLE_PATH);
         }
 
         /// <summary>
-        /// 计时生成管子，以及初始化管子和设置回收管子事件
+        /// 计时生成火圈，以及初始化管子和设置回收管子事件
         /// </summary>
         void UpdateSpawnFireCircle()
         {
@@ -124,7 +123,8 @@ namespace MGP_008Circus {
                         fireTrans.position = m_SpawnPos;
                     }
                 }
-
+                
+                // 移除
                 while (m_RemoveFireCircleTrQue.Count > 0)
                 {
                     m_ShowFireCircleTransformList.Remove(m_RemoveFireCircleTrQue.Dequeue());

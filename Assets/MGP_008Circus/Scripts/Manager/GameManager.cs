@@ -30,8 +30,6 @@ namespace MGP_008Circus {
             // 2D 游戏屏幕适配
             Tools.AdaptationFor2DGame(GameConfig.GAME_DEVELOP_BASE_SCREEN_WIDTH, GameConfig.GAME_DEVELOP_BASE_SCREEN_HEIGHT, m_MainCamera);
 
-            
-
             m_ResLoadServer = new ResLoadServer();
             m_AudioServer = new AudioServer();
             RegisterServer(m_ResLoadServer);

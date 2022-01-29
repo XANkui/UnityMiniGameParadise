@@ -13,6 +13,7 @@ namespace MGP_008Circus
         private Dictionary<Type, object> m_ManagerDict;
         private Dictionary<Type, object> m_ServerDict;
 
+        // 单例
         private static T m_Instance;
         public static T Instance
         {

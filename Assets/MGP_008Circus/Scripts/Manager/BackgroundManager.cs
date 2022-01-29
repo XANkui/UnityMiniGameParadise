@@ -61,12 +61,11 @@ namespace MGP_008Circus {
         }
 
         /// <summary>
-		/// 更新Road位置
-		/// 当位置到达指定位置，进行位置左移，从而实现无限循环
+		/// 更新 Sprite Shader 图片的 Offset 位置
+		/// 从而实现无限循环
 		/// </summary>
 		private void UpdatePosOperation()
         {
-
             m_BgMat.SetTextureOffset(MAIN_TEX, new Vector2(m_BgMainTexVect.x += m_MainTexRunSpeed * Time.deltaTime, m_BgMainTexVect.y));
 
         }

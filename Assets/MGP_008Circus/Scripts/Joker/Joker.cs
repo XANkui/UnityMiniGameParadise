@@ -67,6 +67,12 @@ namespace MGP_008Circus {
 			PlayRunAnimation();
 		}
 
+		public void GameOver()
+		{
+			PlayCollderAnimation();
+			Rigidbody2D.bodyType = RigidbodyType2D.Static;
+		}
+
 		private void PlayCollderAnimation()
 		{
 			Animator.SetTrigger(AnimatorParametersDefine.JOKER_TRIGGER_COLLIDER);
@@ -80,12 +86,6 @@ namespace MGP_008Circus {
 		private void PlayRunAnimation()
 		{
 			Animator.SetBool(AnimatorParametersDefine.JOKER_IS_JUMP,false);
-		}
-
-		public void GameOver()
-        {
-			PlayCollderAnimation();
-			Rigidbody2D.bodyType = RigidbodyType2D.Static;
 		}
 
 		/// <summary>
